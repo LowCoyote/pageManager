@@ -1,13 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 use App\Models\Page;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{route}', function ($route) {
-    $page = Page::where('route', $route)->firstOrFail();
-    return view('page', ['page' => $page]);
-});
+Route::get('/{route}', [PageController::class, 'show']);

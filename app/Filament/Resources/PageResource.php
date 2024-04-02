@@ -25,7 +25,9 @@ class PageResource extends Resource
                     ->required()
                     ->rules(['unique:pages,route,'. ($form->getRecord() ? $form->getRecord()->id : null) ]),
                 Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\Textarea::make('content')->required(),
+                Forms\Components\RichEditor::make('content')
+                    ->required()
+                    ->columnSpan(2),
             ]);
     }
 
